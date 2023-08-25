@@ -4,43 +4,53 @@ public class ArrayQueue<T> {
 
     ArrayList<T> A;
 
-    int first = -1;
-    int last = -1;
+    private int first;
+    private int last;
+    private int size;
 
-    int size;
+    public ArrayQueue(int cap) {
+        size = 0;
+        first = 0;
+        last = -1;
 
-    ArrayQueue(int size) {
-        this.size = size;
+        A = new ArrayList<T>(cap);
+    }
 
-        this.A = new ArrayList<T>(size);
+    boolean isFull(){
+        return last == size;
     }
 
     void enqueue(T X){
-        if (first > last){
+        if (isFull()){
             System.out.println("Queue is full.");
+            //System.out.println("last: "+last);
+            //System.out.println("list size: "+size);
         }
         else{
-            last = last+1;
+            last++;
             A.add(X);
+            size++;
         }
 
     }
 
     T dequeue(){
-        if(first > last){
+        if(isEmpty()){
             System.out.println("Queue is empty.");
             return null;
         }
         else{
-
-            first = first+1;
+            T removed = peek();
+            //A.remove(first);
+            first++;
+            size--;
+            return removed;
         }
-        return A.get(first);
     }
 
     T peek(){
-        if(first == -1){
-            System.out.println("Stack is empty.");
+        if(isEmpty()){
+            System.out.println("Queue is empty.");
             return null;
         }
         else {
@@ -49,7 +59,7 @@ public class ArrayQueue<T> {
     }
 
     boolean isEmpty(){
-        return (first == -1 && last == -1) || (first > last);
+        return first > last;
     }
 
     public int size() {
@@ -58,12 +68,14 @@ public class ArrayQueue<T> {
 
     public String toString(){
         String Ans = "";
+        if(isEmpty()){
+            return "Queue is empty.";
+        }
 
-        for (int i = 0; i < last; i++){
+        for (int i = first; i <= last; i++){
             Ans += String.valueOf(A.get(i)) + ", ";
         }
 
-        Ans += String.valueOf(A.get(last));
 
         return Ans;
     }

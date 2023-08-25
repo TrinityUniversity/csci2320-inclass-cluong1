@@ -10,9 +10,7 @@ public class Main {
         s1.push(20);
         s1.push(30);
 
-        s2.enqueue(10);
-        s2.enqueue(20);
-        s2.enqueue(30);
+
 
         System.out.println("s1 after pushing: " +s1);
 
@@ -22,12 +20,42 @@ public class Main {
 
         System.out.println("Current top element of s1: "+ s1.peek());
 
+        System.out.println("Testing removing 1 element1 of s1: ");
+
+        s1.pop();
+
+        System.out.println("Printing s1: " + s1);
+
+        System.out.println("Testing removing 1 element1 of s1: ");
+
+        s1.pop();
+
+        System.out.println("Printing s1: " + s1);
+
+        System.out.println("--------------------------------------------------------");
+
+        s2.enqueue(10);
+        s2.enqueue(20);
+        s2.enqueue(30);
+        
         System.out.println("s2 after enqueuing: "+s2);
 
         s2.dequeue();
 
-        System.out.println("s2 after dequeuing 1 element:" + s2);
+        System.out.println("s2 after dequeuing 1 element: " + s2);
 
         System.out.println("Current first element of s2: "+s2.peek());
+
+        System.out.println("Deuqueuing an element from s2: ");
+
+        s2.dequeue();
+
+        System.out.println("s2 after dequeuing 2 elements: " +s2);
+
+        System.out.println("Deuqueuing an element from s2: ");
+
+        s2.dequeue();
+
+        System.out.println("s2 after dequeuing all elements: " +s2);
     }
 }

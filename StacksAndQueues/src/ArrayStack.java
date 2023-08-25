@@ -8,7 +8,7 @@ public class ArrayStack<T> {
 
     int size;
 
-    ArrayStack(int size){
+    public ArrayStack(int size){
         this.size = size;
 
         this.A = new ArrayList<T>(size);
@@ -44,11 +44,14 @@ public class ArrayStack<T> {
     T pop(){
         if(top == -1){
             System.out.println("Stack is empty.");
+            return null;
         }
         else{
+            T popped = A.get(top);
             top--;
+            return popped;
         }
-        return A.get(top);
+
     }
 
     boolean isEmpty(){
@@ -62,11 +65,16 @@ public class ArrayStack<T> {
     public String toString(){
         String Ans = "";
 
+
+
         for (int i = 0; i < top; i++){
             Ans += String.valueOf(A.get(i)) + ", ";
         }
 
-        Ans += String.valueOf(A.get(top));
+        if (top >= 0) {
+            Ans += String.valueOf(A.get(top));
+        }
+
 
         return Ans;
 
